@@ -1,0 +1,62 @@
+from fabric.colors import magenta
+from fabric.api import local, execute
+
+from tugboat.deployment import *
+from tugboat.deployment.app.tasks import activate, record_deployment
+import os, sys
+
+###########################
+# define event listeners
+###########################
+def pre_full_deploy(*args, **kwargs):
+    print(magenta("\n** EVENT:pre_full_deploy happens now **"))
+
+def post_full_deploy(*args, **kwargs):
+    print(magenta("** EVENT:post_full_deploy **\n"))
+
+def pre_infrastructure_deploy(*args, **kwargs):
+    print(magenta("\n** EVENT:pre_infrastructure_deploy **"))
+
+def post_infrastructure_deploy(*args, **kwargs):
+    print(magenta("** EVENT:post_infrastructure_deploy **\n"))
+
+def pre_app_deploy(*args, **kwargs):
+    print(magenta("\n** EVENT:pre_app_deploy **"))
+
+def post_app_deploy(version, result, *args, **kwargs):
+    print(magenta("** EVENT:post_app_deploy **\n"))
+
+def pre_activate(*args, **kwargs):
+    print(magenta("\n** EVENT:pre_activate **"))
+
+def post_activate(*args, **kwargs):
+    print(magenta("** EVENT:post_activate **\n"))
+
+def pre_install_app_package(*args, **kwargs):
+    print(magenta("\n** EVENT:pre_install_app_package **"))
+
+def post_install_app_package(*args, **kwargs):
+    print(magenta("** EVENT:post_install_app_package **\n"))
+
+def pre_install_static_package(*args, **kwargs):
+    print(magenta("\n** EVENT:pre_install_static_package **"))
+
+def post_install_static_package(*args, **kwargs):
+    print(magenta("** EVENT:post_install_static_package **\n"))
+
+
+########################################
+# register deployment event listeners
+########################################
+events.add_listener(events.EventNames.PRE_FULL_DEPLOY, pre_full_deploy)
+events.add_listener(events.EventNames.POST_FULL_DEPLOY, post_full_deploy)
+events.add_listener(events.EventNames.PRE_INFRASTRUCTURE_DEPLOY, pre_infrastructure_deploy)
+events.add_listener(events.EventNames.POST_INFRASTRUCTURE_DEPLOY, post_infrastructure_deploy)
+events.add_listener(events.EventNames.PRE_APP_DEPLOY, pre_app_deploy)
+events.add_listener(events.EventNames.POST_APP_DEPLOY, post_app_deploy)
+events.add_listener(events.EventNames.PRE_ACTIVATE, pre_activate)
+events.add_listener(events.EventNames.POST_ACTIVATE, post_activate)
+events.add_listener(events.EventNames.PRE_INSTALL_APP_PACKAGE, pre_install_app_package)
+events.add_listener(events.EventNames.POST_INSTALL_APP_PACKAGE, post_install_app_package)
+events.add_listener(events.EventNames.PRE_INSTALL_STATIC_PACKAGE, pre_install_static_package)
+events.add_listener(events.EventNames.POST_INSTALL_STATIC_PACKAGE, post_install_static_package)

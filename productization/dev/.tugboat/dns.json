@@ -1,0 +1,69 @@
+{
+  "dns": {
+    "env": {
+      "dev": {
+        "zones": {
+          "dev-prsn.com.": {
+            "records": [
+              {
+                "id": "${application.name}.dev-prsn.com",
+                "ttl": 300,
+                "type": "CNAME",
+                //  Possible ways to specify dns values:
+                //    "values": [
+                //      "1.2.3.4",
+                //      "5.6.7.8"
+                //    ],
+                //    "values_from_config_keys": [
+                //      "elb_config_key",
+                //      "haproxy_config_key"
+                //    ]
+                //  Keys for values config sections of either elb's or haproxy's...
+                //  These must be the actual full key's...  values at the
+                //  specified key will be used to find the correct elb
+                //  and/or haproxy instances and placed in the "value" section
+                //  of the nibiru dns resource.
+                //
+                "values_from_config_keys": [
+                  "infrastructure.elastic_loadbalancer"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "prd": {
+        "zones": {
+          "prv-prsn.com.": {
+            "records": [
+              {
+                "id": "${application.name}.prv-prsn.com",
+                "ttl": 300,
+                "type": "CNAME",
+                "values_from_config_keys": [
+                  "infrastructure.elastic_loadbalancer"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "stg": {
+        "zones": {
+          "stg-prsn.com.": {
+            "records": [
+              {
+                "id": "${application.name}.stg-prsn.com",
+                "ttl": 300,
+                "type": "CNAME",
+                "values_from_config_keys": [
+                  "infrastructure.elastic_loadbalancer"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

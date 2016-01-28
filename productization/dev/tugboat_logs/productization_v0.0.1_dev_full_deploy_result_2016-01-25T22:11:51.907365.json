@@ -1,0 +1,259 @@
+{
+    "infrastructure": {
+        "web_proxy": {
+            "complete": [
+                {
+                    "app_type": "prxy",
+                    "app_name": "productization",
+                    "privacy": "priv",
+                    "ip": "10.199.250.12",
+                    "hostname": "dev-use1b-pr-45-productizati-prxy-0005.prv-openclass.com",
+                    "aws": {
+                        "subnet": "subnet-cce6d5e4",
+                        "zone": "us-east-1b",
+                        "tags": {},
+                        "region": "us-east-1",
+                        "image_id": "ami-e906b882",
+                        "id": "i-366994b6",
+                        "security_groups": [
+                            "sg-be15dbd1"
+                        ],
+                        "size": "t2.small"
+                    },
+                    "storage_type": "none",
+                    "environment": "dev",
+                    "state": "running",
+                    "_links": {
+                        "owner": {
+                            "href": "https://nibiru-prod.prsn.us/api/teams/45"
+                        },
+                        "self": {
+                            "href": "https://nibiru-prod.prsn.us/api/instances/dev-use1b-pr-45-productizati-prxy-0005"
+                        },
+                        "asynchronous": {
+                            "href": "https://nibiru-prod.prsn.us/api/async/instances/dev-use1b-pr-45-productizati-prxy-0005"
+                        },
+                        "network": {
+                            "href": "https://nibiru-prod.prsn.us/api/networks/aws-dev-us-east-1b-priv"
+                        }
+                    },
+                    "location": "use1b",
+                    "puppet": {
+                        "environment": "v8",
+                        "classes": {
+                            "profiles::web_proxy": {
+                                "domain": "dev-prsn.com"
+                            }
+                        },
+                        "parameters": {}
+                    },
+                    "locked": false,
+                    "id": "dev-use1b-pr-45-productizati-prxy-0005",
+                    "tags": {
+                        "nibiru_scheduler_start_time": "00:00",
+                        "nibiru_scheduler_enabled": "false",
+                        "tugboat_version": "0.9.7",
+                        "nibiru_scheduler_stop_time": "15:30",
+                        "created_by": "tugboat"
+                    },
+                    "size": "small"
+                }
+            ],
+            "incomplete": []
+        },
+        "elastic_loadbalancer": {
+            "complete": [],
+            "incomplete": []
+        },
+        "dns": {
+            "complete": [
+                {
+                    "tags": {},
+                    "values": [
+                        "internal-dev-pr-45-productizati-0014-747681390.us-east-1.elb.amazonaws.com"
+                    ],
+                    "ttl": 300,
+                    "_links": {
+                        "zone": {
+                            "href": "https://nibiru-prod.prsn.us/api/dns/zones/dev-prsn.com"
+                        },
+                        "self": {
+                            "href": "https://nibiru-prod.prsn.us/api/dns/records/productization.dev-prsn.com"
+                        },
+                        "documentation": {
+                            "href": "https://nibiru-prod.prsn.us/api/doc/dns/records/productization.dev-prsn.com"
+                        },
+                        "asynchronous": {
+                            "href": "https://nibiru-prod.prsn.us/api/async/dns/records/productization.dev-prsn.com"
+                        },
+                        "owner": {
+                            "href": "https://nibiru-prod.prsn.us/api/teams/45"
+                        },
+                        "schema": {
+                            "href": "https://nibiru-prod.prsn.us/api/schema/dns/records/productization.dev-prsn.com"
+                        }
+                    },
+                    "type": "CNAME",
+                    "id": "productization.dev-prsn.com"
+                }
+            ],
+            "incomplete": []
+        }
+    },
+    "application": {
+        "provision_app_servers": {
+            "complete": [
+                {
+                    "locked": false,
+                    "app_name": "productization",
+                    "privacy": "priv",
+                    "ip": "10.199.246.61",
+                    "hostname": "dev-use1b-pr-45-productizati-00x00x01-0007.prv-openclass.com",
+                    "aws": {
+                        "subnet": "subnet-1d710b35",
+                        "zone": "us-east-1b",
+                        "tags": {},
+                        "region": "us-east-1",
+                        "image_id": "ami-e906b882",
+                        "id": "i-0b609d8b",
+                        "security_groups": [
+                            "sg-be15dbd1"
+                        ],
+                        "size": "m3.medium"
+                    },
+                    "storage_type": "none",
+                    "environment": "dev",
+                    "state": "running",
+                    "_links": {
+                        "network": {
+                            "href": "https://nibiru-prod.prsn.us/api/networks/aws-dev-us-east-1b-priv"
+                        },
+                        "self": {
+                            "href": "https://nibiru-prod.prsn.us/api/instances/dev-use1b-pr-45-productizati-00x00x01-0007"
+                        },
+                        "documentation": {
+                            "href": "https://nibiru-prod.prsn.us/api/doc/instances/dev-use1b-pr-45-productizati-00x00x01-0007"
+                        },
+                        "asynchronous": {
+                            "href": "https://nibiru-prod.prsn.us/api/async/instances/dev-use1b-pr-45-productizati-00x00x01-0007"
+                        },
+                        "owner": {
+                            "href": "https://nibiru-prod.prsn.us/api/teams/45"
+                        },
+                        "dns_record": {
+                            "href": "https://nibiru-prod.prsn.us/api/dns/records/dev-use1b-pr-45-productizati-00x00x01-0007.prv-openclass.com"
+                        },
+                        "schema": {
+                            "href": "https://nibiru-prod.prsn.us/api/schema/instances/dev-use1b-pr-45-productizati-00x00x01-0007"
+                        }
+                    },
+                    "location": "use1b",
+                    "puppet": {
+                        "environment": "v8",
+                        "classes": {
+                            "thalassa::client": {
+                                "config": {
+                                    "host": "dev-use1b-thalassa.prv-openclass.com",
+                                    "apiport": 9000,
+                                    "registrations": "productization@0.0.1:8080"
+                                }
+                            },
+                            "java": {}
+                        },
+                        "parameters": {}
+                    },
+                    "app_version": "0.0.1",
+                    "id": "dev-use1b-pr-45-productizati-00x00x01-0007",
+                    "tags": {
+                        "nibiru_scheduler_start_time": "00:00",
+                        "nibiru_scheduler_enabled": "false",
+                        "tugboat_version": "0.9.7",
+                        "nibiru_scheduler_stop_time": "15:30",
+                        "created_by": "tugboat"
+                    },
+                    "size": "medium"
+                },
+                {
+                    "locked": false,
+                    "app_name": "productization",
+                    "privacy": "priv",
+                    "ip": "10.199.250.50",
+                    "hostname": "dev-use1b-pr-45-productizati-00x00x01-0008.prv-openclass.com",
+                    "aws": {
+                        "subnet": "subnet-cce6d5e4",
+                        "zone": "us-east-1b",
+                        "tags": {},
+                        "region": "us-east-1",
+                        "image_id": "ami-e906b882",
+                        "id": "i-f2609d72",
+                        "security_groups": [
+                            "sg-be15dbd1"
+                        ],
+                        "size": "m3.medium"
+                    },
+                    "storage_type": "none",
+                    "environment": "dev",
+                    "state": "running",
+                    "_links": {
+                        "network": {
+                            "href": "https://nibiru-prod.prsn.us/api/networks/aws-dev-us-east-1b-priv"
+                        },
+                        "self": {
+                            "href": "https://nibiru-prod.prsn.us/api/instances/dev-use1b-pr-45-productizati-00x00x01-0008"
+                        },
+                        "documentation": {
+                            "href": "https://nibiru-prod.prsn.us/api/doc/instances/dev-use1b-pr-45-productizati-00x00x01-0008"
+                        },
+                        "asynchronous": {
+                            "href": "https://nibiru-prod.prsn.us/api/async/instances/dev-use1b-pr-45-productizati-00x00x01-0008"
+                        },
+                        "owner": {
+                            "href": "https://nibiru-prod.prsn.us/api/teams/45"
+                        },
+                        "dns_record": {
+                            "href": "https://nibiru-prod.prsn.us/api/dns/records/dev-use1b-pr-45-productizati-00x00x01-0008.prv-openclass.com"
+                        },
+                        "schema": {
+                            "href": "https://nibiru-prod.prsn.us/api/schema/instances/dev-use1b-pr-45-productizati-00x00x01-0008"
+                        }
+                    },
+                    "location": "use1b",
+                    "puppet": {
+                        "environment": "v8",
+                        "classes": {
+                            "thalassa::client": {
+                                "config": {
+                                    "host": "dev-use1b-thalassa.prv-openclass.com",
+                                    "apiport": 9000,
+                                    "registrations": "productization@0.0.1:8080"
+                                }
+                            },
+                            "java": {}
+                        },
+                        "parameters": {}
+                    },
+                    "app_version": "0.0.1",
+                    "id": "dev-use1b-pr-45-productizati-00x00x01-0008",
+                    "tags": {
+                        "nibiru_scheduler_start_time": "00:00",
+                        "nibiru_scheduler_enabled": "false",
+                        "tugboat_version": "0.9.7",
+                        "nibiru_scheduler_stop_time": "15:30",
+                        "created_by": "tugboat"
+                    },
+                    "size": "medium"
+                }
+            ],
+            "incomplete": []
+        },
+        "install_app_package": {
+            "localhost": "Package path not found. Not installing app package."
+        },
+        "install_static_package": "No static package to install -- skipping it.",
+        "create_backends": [
+            {
+                "10.199.250.12": true
+            }
+        ]
+    }
+}

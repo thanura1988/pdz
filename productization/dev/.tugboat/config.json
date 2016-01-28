@@ -1,0 +1,13 @@
+{
+  "engines": {
+    "tugboat": ">=0.8.2"
+  },
+  "includes": [
+    "nibiru_defaults.json",
+    "app.json",
+    "dns.json",
+    "elb.json",
+    "nibiru.json",
+    "web_proxy.json"
+  ]
+}

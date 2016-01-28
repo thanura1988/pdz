@@ -1,0 +1,76 @@
+{
+  "infrastructure": {
+    "web_proxy": {
+      "app_name": "${application.name}",
+      "type": "web_proxy",
+      "env": {
+        "default": {
+          "app_name": "${application.name}",
+          "privacy": "priv",
+          "aws": {
+            "size": "t2.small"
+          },
+          "size": "small",
+          "location": [
+            "use1b",
+            "use1c"
+          ],
+          "puppet": {
+            "classes": {
+              "profiles::web_proxy": {
+                "domain": "%(environment)s-prsn.com"
+              }
+            }
+          }
+        },
+        "prd": {
+          "aws": {
+            "size": "m3.large"
+          },
+          "size": "large",
+          "privacy": "pub",
+          "location": [
+            "use1b",
+            "use1c"
+          ]
+        },
+        "dev": {
+          "location": [
+            "use1b"
+          ],
+        "tags": {
+        "nibiru_scheduler_enabled": "false",
+        "nibiru_scheduler_start_time": "00:00",
+        "nibiru_scheduler_stop_time": "15:30"
+        }
+        },
+        "stg": {
+          "location": [
+            "use1b",
+            "use1c"
+          ]
+        }
+      },
+      "aqueduct": {
+        "frontend_templates": [
+          {
+            "name": "${infrastructure.web_proxy.app_name}-frontend",
+            "bind": "*:80,*:8080",
+            "backend": "${application.name}-%(version)s",
+            "mode": "http",
+            "keepalive": "server-close"
+          }
+        ],
+        "backend_templates": [
+          {
+            "key": "${application.name}-%(version)s",
+            "name": "${application.name}",
+            "type": "dynamic",
+            "version": "%(version)s",
+            "balance": "roundrobin"
+          }
+        ]
+      }
+    }
+  }
+}

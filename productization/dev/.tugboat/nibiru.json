@@ -1,0 +1,18 @@
+{
+    "nibiru": {
+        // if team_uri is not specified here, NIBIRU_TEAM_URI environment variable must be set
+        // "team_uri": "https://nibiru/team/uri",
+        "team_uri": "https://nibiru-prod.prsn.us/api/teams/45",
+
+        // if bearer_token is not specified here, NIBIRU_BEARER_TOKEN environment variable must be set
+        // "bearer_token": "a nibiru api bearer token",
+        "bearer_token": "b3f24ba7-64b3-4751-85a4-17a60d0fea7e",
+
+        // While not required, ssh key_filename can be provided here
+        // "key_filename": "some path",
+        "key_filename": "some path",
+
+        // While not required, ssh_user is defaulted to the "ubuntu" user
+        "ssh_user": "ubuntu"
+    }
+}

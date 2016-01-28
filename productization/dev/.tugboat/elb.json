@@ -1,0 +1,38 @@
+{
+  "infrastructure": {
+    "elastic_loadbalancer": {
+      "type": "elb",
+      "env": {
+        "default": {
+          "app_name": "${application.name}",
+          "privacy": "priv",
+          // the value within %()s below should be the key of the web_proxy
+          // config section to use for looking up actual web_proxy instances
+          // at runtime
+          "backend_instances": [
+            "%(infrastructure.web_proxy)s"
+          ],
+          "backend": {
+            "health_check": {
+              "protocol": "HTTPS",
+              "port": 443,
+              "path": "/health"
+            }
+          },
+          "frontend": {
+            "listeners": [
+              {
+                "protocol": "TCP",
+                "loadbalancer_port": 443,
+                "instance_port": 443
+              }
+            ]
+          }
+        },
+        "prd": {
+          "privacy": "pub"
+        }
+      }
+    }
+  }
+}

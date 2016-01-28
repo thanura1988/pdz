@@ -1,0 +1,71 @@
+{
+  "application": {
+    "deploy_steps": [
+      "provision_app_servers",
+      "install_app_package",
+      "install_static_package",
+      "create_backends"
+    ],
+    "package": {},
+    "name": "productization",
+    "env": {
+      "default": {
+        "app_name": "${application.name}",
+        "location": [
+          "use1b",
+          "use1b",
+          "use1c",
+          "use1c"
+        ],
+        "puppet": {
+          "classes": {
+            "thalassa::client": {
+              "config": {
+                "apiport": 9000,
+                "host": "%(environment)s-%(location)s-thalassa.prv-openclass.com",
+                "registrations": "${application.name}@%(version)s:8080"
+              }
+            },
+            "java": {}
+          },
+          "parameters": {}
+        },
+        "size": "medium",
+        "aws": {
+          "size": "m3.medium"
+        }
+      },
+      "prd": {
+        "size": "large",
+        "aws": {
+          "size": "m3.large"
+        },
+        "location": [
+          "use1b",
+          "use1b",
+          "use1c",
+          "use1c"
+        ]
+      },
+      "dev": {
+        "location": [
+          "use1b",
+          "use1b"
+        ],
+        "tags": {
+        "nibiru_scheduler_enabled": "false",
+        "nibiru_scheduler_start_time": "00:00",
+        "nibiru_scheduler_stop_time": "15:30"
+        }
+      },
+      "stg": {
+        "location": [
+          "use1b",
+          "use1b",
+          "use1c",
+          "use1c"
+        ]
+      }
+    }
+  }
+}
